@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07E1D2DD-C70D-416B-84D7-B2D4FF7E3566}|Workshop 3\\Workshop 3.vcxproj|C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07E1D2DD-C70D-416B-84D7-B2D4FF7E3566}|Workshop 3\\Workshop 3.vcxproj|solutionrelative:Workshop 3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87AD615-AAB4-4598-AAF9-4BF514E25417}|UnitTest1\\UnitTest1.vcxproj|C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D87AD615-AAB4-4598-AAF9-4BF514E25417}|UnitTest1\\UnitTest1.vcxproj|solutionrelative:UnitTest1\\UnitTest1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07E1D2DD-C70D-416B-84D7-B2D4FF7E3566}|Workshop 3\\Workshop 3.vcxproj|C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\workshop3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07E1D2DD-C70D-416B-84D7-B2D4FF7E3566}|Workshop 3\\Workshop 3.vcxproj|solutionrelative:Workshop 3\\workshop3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87AD615-AAB4-4598-AAF9-4BF514E25417}|UnitTest1\\UnitTest1.vcxproj|C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest_r.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D87AD615-AAB4-4598-AAF9-4BF514E25417}|UnitTest1\\UnitTest1.vcxproj|solutionrelative:UnitTest1\\UnitTest_r.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\main.c",
+              "RelativeDocumentMoniker": "Workshop 3\\main.c",
+              "ToolTip": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\main.c",
+              "RelativeToolTip": "Workshop 3\\main.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-05-24T02:41:11.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "workshop3.h",
+              "DocumentMoniker": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\workshop3.h",
+              "RelativeDocumentMoniker": "Workshop 3\\workshop3.h",
+              "ToolTip": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\workshop3.h",
+              "RelativeToolTip": "Workshop 3\\workshop3.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-24T03:03:28.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UnitTest_r.h",
+              "DocumentMoniker": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest_r.h",
+              "RelativeDocumentMoniker": "UnitTest1\\UnitTest_r.h",
+              "ToolTip": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest_r.h",
+              "RelativeToolTip": "UnitTest1\\UnitTest_r.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-24T03:02:09.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitTest1.cpp",
+              "DocumentMoniker": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest1.cpp",
+              "RelativeDocumentMoniker": "UnitTest1\\UnitTest1.cpp",
+              "ToolTip": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\UnitTest1\\UnitTest1.cpp",
+              "RelativeToolTip": "UnitTest1\\UnitTest1.cpp",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAgwCkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-24T02:53:25.047Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
