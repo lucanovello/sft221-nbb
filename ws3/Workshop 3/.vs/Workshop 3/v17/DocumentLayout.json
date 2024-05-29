@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Workshop 3\\main.c",
               "ToolTip": "C:\\Storage\\SCHOOL\\summer-2024\\sft221-nbb\\ws3\\Workshop 3\\Workshop 3\\main.c",
               "RelativeToolTip": "Workshop 3\\main.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAPAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAMAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-05-24T02:41:11.673Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Workshop 3\\workshop3.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-24T03:03:28.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T03:03:28.487Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "UnitTest1\\UnitTest_r.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-24T03:02:09.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T03:02:09.586Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "UnitTest1\\UnitTest1.cpp",
               "ViewState": "AQIAAB8AAAAAAAAAAAAgwCkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-24T02:53:25.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T02:53:25.047Z"
             }
           ]
         }
