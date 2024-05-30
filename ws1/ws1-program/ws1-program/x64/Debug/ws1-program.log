@@ -1,7 +1,0 @@
-﻿  main.c
-C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\main.c(15,39): warning C4047: ':': 'char [2]' differs in levels of indirection from 'int'
-C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\main.c(14,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\main.c(15,7): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
-C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\main.c(31,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\main.c(32,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  ws1-program.vcxproj -> C:\Storage\SCHOOL\summer-2024\sft221-nbb\ws1\ws1-program\x64\Debug\ws1-program.exe
