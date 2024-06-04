@@ -8,7 +8,7 @@ int main(void)
 	char testStr[] = { "This is a\n string with embedded newline character and \n12345 numbers inside it as well 67890" };
 	struct StringIndex index = indexString(testStr);
 	int i;
-	printf("'This is a\n string with embedded newline character and \n12345 numbers inside it as well 67890'\n\n");
+	// printf("'This is a\n string with embedded newline character and \n12345 numbers inside it as well 67890'\n\n");
 	printf("LINES\n");
 	for (i = 0; i < index.numLines; i++)
 	{

@@ -6,7 +6,7 @@
 int nextWhite(const char* str)
 {
 	int i, result = -1;
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; result < 0 && str[i] != '\0'; i++)
 	{
 		if (isspace(str[i]))
 		{
