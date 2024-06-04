@@ -36,7 +36,7 @@ struct StringIndex indexString(const char* str)
 	}
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		while (str[i] != '\0' && isspace(str[i]))
+		while (isspace(str[i]))
 		{
 			if (str[i] == '\n')
 			{
