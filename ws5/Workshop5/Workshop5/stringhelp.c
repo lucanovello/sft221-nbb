@@ -40,12 +40,12 @@ struct StringIndex indexString(const char* str)
 		{
 			if (str[i] == '\n')
 			{
-				result.lineStarts[result.numLines] = i + 1;
+				result.lineStarts[result.numLines++] = i + 1;
 			}
 			i++;
 		}
 		sp = nextWhite(str + i);
-		if (isNumber(str + i, sp - i + 1))
+		if (isNumber(str + i, 1))
 		{
 			result.numberStarts[result.numNumbers++] = i;
 		}
