@@ -1,0 +1,10 @@
+[INFO Wed Jun 12 12:41:48 2024]: testStr = 'This is a
+ string with embedded newline character and 
+12345 numbers inside it as well 67890'
+[INFO Wed Jun 12 12:41:48 2024]: String Index complete
+[INFO Wed Jun 12 12:41:48 2024]: numLines = 3
+[INFO Wed Jun 12 12:41:48 2024]: LINES print complete
+[INFO Wed Jun 12 12:41:48 2024]: numWords = 14
+[INFO Wed Jun 12 12:41:48 2024]: WORDS print complete
+[INFO Wed Jun 12 12:41:48 2024]: numNumbers = 2
+[INFO Wed Jun 12 12:41:48 2024]: NUMBERS print complete
