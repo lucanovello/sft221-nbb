@@ -1,25 +1,36 @@
 #ifndef DATA_H
 #define DATA_H
 
-#define TRUCK_MAX_WEIGHT_CAPACITY 2500
-#define TRUCK_MAX_BOX_SIZE_CAPACITY 100
+#define GRID_SIZE 25
+#define TRUCK_MAX_WEIGHT 2500
+#define TRUCK_MAX_VOLUME 100
 
-// Define the struct for a package
+// Struct for each Cell in the grid
+struct Cell
+{
+    int isBuilding;
+    int isPath;
+    char color;	// color of cell if on path ['B'='BLUE', 'Y'='YELLOW', 'G'='GREEN', 'N'='N/A']
+};
+
+// Struct for a Package
 struct Package
 {
     double weight;
     double size;
-    char destination[100][100]; //not sure if routes should be formatted like this?
+	int destinationRow;
+    char destinationCol;	// will need to get converted to a array index later in function (through ASCII).
 };
 
-// Define the struct for a truck
+// Struct for a Truck
 struct Truck
 {
-    char routeColour[10];     // the path taken by the truck (e.g., 'BLUE', 'YELLOW', 'GREEN')
-    float max_weight_capacity;
-    int max_volume_capacity;
-    float current_weight;
+    char routeColour;     // the path taken by the truck ['B'='BLUE', 'Y'='YELLOW', 'G'='GREEN']
+    double current_weight;
     int current_volume;
+    int *route;
+    int routeLength;
 };
+
 
 #endif
