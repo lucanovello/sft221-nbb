@@ -1,9 +1,11 @@
 #pragma once
 #ifndef MAPPING_H
 #define MAPPING_H
+#include "data.h"
 
 #define MAP_ROWS 25
 #define MAP_COLS 25
+#define TRUCK_MAX_WEIGHT 2500  // max truck weight
 #define MAX_ROUTE 100
 #define BLUE 2
 #define GREEN 4
@@ -13,8 +15,7 @@
 /**
 * A map is a 2D raster representation of a map with contents of the map encoded as numeric values.
 */
-struct Map
-{
+struct Map {
 	int squares[MAP_ROWS][MAP_COLS];
 	int numRows;
 	int numCols;
@@ -23,8 +24,7 @@ struct Map
 /**
 * A point represents the row-column position of a square on a map.
 */
-struct Point
-{
+struct Point {
 	char row;
 	char col;
 };
@@ -33,8 +33,7 @@ struct Point
 * A route is a collection of points that are adjacent to one another and constitute a path from the 
 * first point on the path to the last.
 */
-struct Route
-{
+struct Route {
 	struct Point points[MAX_ROUTE];
 	int numPoints;
 	char routeSymbol;
