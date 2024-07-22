@@ -26,15 +26,24 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
 	}
 }
 
-int isValidDestination(const struct Map map, const struct Point destination) {
-	int result;
-	if (map.squares[destination.row][destination.col] == 1) {
-		printf("Invalid destination!\n");
-		result = 0;
-	}else{
-		result = 1;
+int isValidDestination(const struct Map* map, const struct Point destination) {
+	// Check if the map is not NULL
+	if (map == NULL) {
+		return 0;  // Invalid map
 	}
-	return result;	
+
+	// Check if destination is within map bounds
+	if (destination.row < 0 || destination.row >= MAP_ROWS ||
+		destination.col < 0 || destination.col >= MAP_COLS) {
+		return 0;  // Out of bounds
+	}
+
+	// Check if the destination is valid (not a building)
+	if (map->squares[destination.row][destination.col] == 1) {
+		return 0;  // Invalid destination (building present)
+	}
+
+	return 1;  // Valid destination
 }
 
 void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int* availableVolume) {
@@ -52,4 +61,16 @@ void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int
 		printf("There is %dkg available.\n", availVolume);
 		printf("There is %fkg available.\n", availWeight);
 	}
+}
+
+int isValidPoint(struct Point* point) {
+	if (point == NULL) {
+		return 0; // Handle null pointer
+	}
+
+	if (point->row >= 0 && point->row < MAP_ROWS && point->col >= 0 && point->col < MAP_COLS) {
+		return 1;
+	}
+
+	return 0;
 }

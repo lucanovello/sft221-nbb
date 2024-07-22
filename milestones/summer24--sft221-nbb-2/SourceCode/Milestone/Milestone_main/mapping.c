@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "mapping.h"
 #include "math.h"
+#include "additional_functions.h"
+
 
 struct Map populateMap()
 {
@@ -213,12 +215,19 @@ void addPointToRouteIfNot(struct Route* route, const int row, const int col, con
 	if(notThis.row != row || notThis.col != col) addPtToRoute(route, pt);
 }
 
-double distance(const struct Point* p1, const struct Point* p2)
-{
-	int deltaRow = p2->row - p1->row;
-	int deltaCol = p2->col - p1->col;
+double distance(const struct Point* p1, const struct Point* p2) {
+	double result;
 
-	return sqrt((double)(deltaRow * deltaRow + deltaCol * deltaCol));
+	if (isValidPoint(p1) && isValidPoint(p2)) {
+		int deltaRow = p2->row - p1->row;
+		int deltaCol = p2->col - p1->col;
+		result = sqrt((double)(deltaRow * deltaRow + deltaCol * deltaCol));
+	}
+	else {
+		result = -1;
+	}
+
+	return result;
 }
 
 struct Route shortestPath(const struct Map* map, const struct Point start, const struct Point dest)

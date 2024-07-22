@@ -19,7 +19,7 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
  * @param destination -  the destination point to check
  * @returns 1 if the destination is valid, 0 otherwise.
  **/
-int isValidDestination(const struct Map map, const struct Point destination);
+int isValidDestination(const struct Map* map, const struct Point destination);
 
 /** 
  * Calculates the available weight and volume for a truck.
@@ -30,14 +30,10 @@ int isValidDestination(const struct Map map, const struct Point destination);
 void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int* availableVolume);
 
 /** 
- * Finds the shortest path from the truck's route to the destination considering buildings.
- * @param map - the map of the delivery area with buildings on it 
- * @param truckRoute[] - the route of thr truck 
- * @param numPoints - the number of points in the truck's route
- * @param destination - the destination Point to find the path to
- * @param path[] - the array to store the path points
- * @returns The length of the path if found, -1 if no path is found.
+ * evaluates a point to see if it fits the map criteria in this project.
+ * @param point - the point to check
+ * @returns r if the point is valid, 0 if otherwise.
  **/
-int findShortestPath(const struct Map map, const struct Point truckRoute[], const int numPoints, const struct Point destination, struct Point path[]);
+int isValidPoint(struct Point* point);
 
 #endif
