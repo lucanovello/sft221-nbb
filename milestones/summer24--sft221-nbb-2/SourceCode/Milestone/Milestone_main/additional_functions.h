@@ -22,17 +22,17 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
 int isValidDestination(const struct Map* map, const struct Point destination);
 
 /** 
- * Calculates the available weight and volume for a truck.
- * @param truck - the truck to check 
- * @param availableWeight - pointer to store the available weight
- * @param availableVolume - pointer to store the available volume 
+ * Calculates the available weight and volume for a truck and if a package will fit in it.
+ * @param truck - the truck to check if the package will fit
+ * @param package - the package to check 
+ * @returns 1 if the package will fit in the truck, 0 otherwise.
  **/
-void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int* availableVolume);
+int calculateAvailableSpace(const struct Truck truck, const struct Package package);
 
 /** 
  * evaluates a point to see if it fits the map criteria in this project.
  * @param point - the point to check
- * @returns r if the point is valid, 0 if otherwise.
+ * @returns 1 if the point is valid, 0 if otherwise.
  **/
 int isValidPoint(struct Point* point);
 

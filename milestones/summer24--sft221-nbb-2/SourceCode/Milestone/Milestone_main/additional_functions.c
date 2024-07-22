@@ -46,7 +46,8 @@ int isValidDestination(const struct Map* map, const struct Point destination) {
 	return 1;  // Valid destination
 }
 
-void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int* availableVolume) {
+int calculateAvailableSpace(const struct Truck truck, const struct Package package) {
+	int result= 0;
 	double availWeight;
 	int availVolume;
 	if (truck.currentWeight == TRUCK_MAX_WEIGHT) {
@@ -60,17 +61,22 @@ void calculateAvailableSpace(const struct Truck truck, int* availableWeight, int
 		availWeight = TRUCK_MAX_WEIGHT - truck.currentWeight;
 		printf("There is %dkg available.\n", availVolume);
 		printf("There is %fkg available.\n", availWeight);
+		if (package.volume <= availVolume && package.weight <= availWeight)
+		{
+			result = 1;
+		}
 	}
+	return result;
 }
 
 int isValidPoint(struct Point* point) {
+	int result = 0;
 	if (point == NULL) {
-		return 0; // Handle null pointer
+		result = 0; // Handle null pointer
+	}
+	else if (point->row >= 0 && point->row < MAP_ROWS && point->col >= 0 && point->col < MAP_COLS) {
+		result = 1;
 	}
 
-	if (point->row >= 0 && point->row < MAP_ROWS && point->col >= 0 && point->col < MAP_COLS) {
-		return 1;
-	}
-
-	return 0;
+	return result;
 }
