@@ -2,9 +2,6 @@
 #define DATA_H
 #include "mapping.h"
 
-
-
-
 /**
  * Struct for a Package or Shipment
  * @param Point destination - points on the map corresponding to package destination
