@@ -3,7 +3,7 @@
 echo "Starting test runner..."
  
 test_runner="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
-tests_dll="C:\Users\karis\OneDrive\Desktop\summer24--sft221-nbb-2-main\summer24--sft221-nbb-2-main\SourceCode\Milestone\Milestone_unitTesting"
+tests_dll="C:\Users\karis\OneDrive\Desktop\summer24--sft221-nbb-2\SourceCode\Milestone\x64\Debug\Milestone_unitTesting.dll"
 failure_string="Failed:"
  
 testout=`"$test_runner" "$tests_dll"`
