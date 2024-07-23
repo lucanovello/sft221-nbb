@@ -3,7 +3,7 @@
 
 // added for ms4
 int findTruckForShipment(const struct Map map, const struct Truck trucks[], const int numTrucks, const struct Package package) {
-	// Check if the map is invalid && Trucks array isn't empty
+	// Check if the map is invalid
 	if ((map.numRows <= 0 || map.numCols <= 0) && numTrucks < 0) {
 		return -1;
 	}
@@ -26,6 +26,7 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
 			}
 		}
 	}
+
 	return bestTruckIndex;
 }
 
@@ -50,22 +51,20 @@ int isValidDestination(const struct Map* map, const struct Point destination) {
 }
 
 int calculateAvailableSpace(const struct Truck truck, const struct Package package) {
-	int result= 0;
-	double availWeight;
-	int availVolume;
-	if (truck.currentWeight == TRUCK_MAX_WEIGHT) {
+	int result = 0;
+	double availWeight = TRUCK_MAX_WEIGHT - truck.currentWeight;
+	int availVolume = TRUCK_MAX_VOLUME - truck.currentVolume;
+
+	if (availWeight <= 0) {
 		printf("The truck has reached weight capacity!\n");
 	}
-	else if(truck.currentVolume == TRUCK_MAX_VOLUME) {
+	else if (availVolume <= 0) {
 		printf("The truck has reached volume capacity!\n");
 	}
-	else if (truck.currentVolume < TRUCK_MAX_VOLUME && truck.currentWeight < TRUCK_MAX_WEIGHT) {
-		availVolume = TRUCK_MAX_VOLUME - truck.currentVolume;
-		availWeight = TRUCK_MAX_WEIGHT - truck.currentWeight;
-		printf("There is %dkg available.\n", availVolume);
-		printf("There is %fkg available.\n", availWeight);
-		if (package.volume <= availVolume && package.weight <= availWeight)
-		{
+	else {
+		printf("There is %d units of volume available.\n", availVolume);
+		printf("There is %f kg available.\n", availWeight);
+		if (package.volume <= availVolume && package.weight <= availWeight) {
 			result = 1;
 		}
 	}
@@ -82,4 +81,30 @@ int isValidPoint(struct Point* point) {
 	}
 
 	return result;
+}
+
+int arePointsEqual(const struct Point p1, const struct Point p2) {
+	int result = 0;
+	if (p1.row == p2.row && p1.col == p2.col) {
+		result = 1;
+	}
+	return result;
+}
+
+int areRoutesEqual(const struct Route route1, const struct Route route2) {
+	// Check if the number of points is the same
+	if (route1.numPoints != route2.numPoints) {
+		return 0;
+	}
+	// Check if the route symbols are the same
+	if (route1.routeSymbol != route2.routeSymbol) {
+		return 0;
+	}
+	// Check if each corresponding point is the same
+	for (int i = 0; i < route1.numPoints; ++i) {
+		if (!arePointsEqual(route1.points[i], route2.points[i])) {
+			return 0;
+		}
+	}
+	return 1;
 }

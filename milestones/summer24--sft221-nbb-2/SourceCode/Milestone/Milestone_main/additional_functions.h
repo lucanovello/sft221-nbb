@@ -36,4 +36,7 @@ int calculateAvailableSpace(const struct Truck truck, const struct Package packa
  **/
 int isValidPoint(struct Point* point);
 
+
+int arePointsEqual(const struct Point p1, const struct Point p2);
+int areRoutesEqual(const  struct Route route1, const  struct Route route2);
 #endif
