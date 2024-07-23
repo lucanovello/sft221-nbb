@@ -238,7 +238,7 @@ struct Route shortestPath(const struct Map* map, const struct Point start, const
 	struct Route possible = { {0,0},0,0 };
 	int close = 0;
 
-	while (!eqPt(current, dest) && close >= 0) // while(distance(&current, &dest)!=1 && close >= 0)
+	while (!eqPt(current, dest) && close >= 0 && isValidPoint(&start) && isValidPoint(&dest)) // checks if points are equall , if the closest point is valid and if the start and dest points are valid
 	{
 		possible = getPossibleMoves(map, current, last);
 		close = getClosestPoint(&possible, dest);

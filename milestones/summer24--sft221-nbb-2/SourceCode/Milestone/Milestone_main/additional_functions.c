@@ -2,8 +2,12 @@
 #include <float.h>
 
 // added for ms4
-int findTruckForShipment(const struct Map map, const struct Truck trucks[], const int numTrucks, const struct Package package)
-{
+int findTruckForShipment(const struct Map map, const struct Truck trucks[], const int numTrucks, const struct Package package) {
+	// Check if the map is invalid && Trucks array isn't empty
+	if ((map.numRows <= 0 || map.numCols <= 0) && numTrucks < 0) {
+		return -1;
+	}
+
 	int bestTruckIndex = -1;
 	double shortestDistance = DBL_MAX;
 
@@ -11,9 +15,7 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
 		const struct Truck* truck = &trucks[i];
 
 		// Check if the truck can accommodate the weight and volume of the package
-		if (truck->currentWeight + package.weight <= TRUCK_MAX_WEIGHT &&
-			truck->currentVolume + package.volume <= TRUCK_MAX_VOLUME) {
-
+		if (calculateAvailableSpace(*truck, package) == 1) {
 			// Calculate the distance from the truck's current position to the package's destination
 			double dist = distance(truck->currentPosition, package.destination);
 
@@ -24,6 +26,7 @@ int findTruckForShipment(const struct Map map, const struct Truck trucks[], cons
 			}
 		}
 	}
+	return bestTruckIndex;
 }
 
 int isValidDestination(const struct Map* map, const struct Point destination) {
