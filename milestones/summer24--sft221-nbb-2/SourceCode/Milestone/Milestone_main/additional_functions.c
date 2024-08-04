@@ -2,9 +2,9 @@
 #include <float.h>
 
 // added for ms4
-int findTruckForShipment(const struct Map map, const struct Truck trucks[], const int numTrucks, const struct Package package) {
-	// Check if the map is invalid
-	if ((map.numRows <= 0 || map.numCols <= 0) && numTrucks < 0) {
+int findTruckForShipment(const struct Map* map, const struct Truck trucks[], const int numTrucks, const struct Package package) {
+	// Check if the map is invalid or empty
+	if (map == NULL || trucks == NULL || map->numRows <= 0 || map->numCols <= 0) {
 		return -1;
 	}
 
@@ -83,28 +83,3 @@ int isValidPoint(struct Point* point) {
 	return result;
 }
 
-int arePointsEqual(const struct Point p1, const struct Point p2) {
-	int result = 0;
-	if (p1.row == p2.row && p1.col == p2.col) {
-		result = 1;
-	}
-	return result;
-}
-
-int areRoutesEqual(const struct Route route1, const struct Route route2) {
-	// Check if the number of points is the same
-	if (route1.numPoints != route2.numPoints) {
-		return 0;
-	}
-	// Check if the route symbols are the same
-	if (route1.routeSymbol != route2.routeSymbol) {
-		return 0;
-	}
-	// Check if each corresponding point is the same
-	for (int i = 0; i < route1.numPoints; ++i) {
-		if (!arePointsEqual(route1.points[i], route2.points[i])) {
-			return 0;
-		}
-	}
-	return 1;
-}

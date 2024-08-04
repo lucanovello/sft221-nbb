@@ -11,7 +11,7 @@
  * @param package - a data structure containing the size and weight of the shipment
  * @returns An integer representing the index of the truck in the trucks array on which the shipment should be placed. If no truck can take the shipment, then -1 is returned.
  **/
-int findTruckForShipment(const struct Map map, const struct Truck trucks[], const int numTrucks, const struct Package package);
+int findTruckForShipment(const struct Map* map, const struct Truck trucks[], const int numTrucks, const struct Package package);
 
 /**
  * Check if the given destination is valid based on the map.
@@ -35,8 +35,4 @@ int calculateAvailableSpace(const struct Truck truck, const struct Package packa
  * @returns 1 if the point is valid, 0 if otherwise.
  **/
 int isValidPoint(struct Point* point);
-
-
-int arePointsEqual(const struct Point p1, const struct Point p2);
-int areRoutesEqual(const  struct Route route1, const  struct Route route2);
 #endif
