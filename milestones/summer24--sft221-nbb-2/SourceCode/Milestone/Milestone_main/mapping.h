@@ -26,8 +26,8 @@ struct Map {
 * A point represents the row-column position of a square on a map.
 */
 struct Point {
-	char row;
-	char col;
+	int row;
+	int col;
 };
 
 /**

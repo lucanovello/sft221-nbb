@@ -4,7 +4,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace MilestoneunitTesting
+namespace MilestoneUnitTesting
 {
 	TEST_CLASS(isValidDestinationTesting)
 	{
@@ -16,7 +16,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Map map = populateMap();
 			struct Point p1 = { 1,3 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(1, d, 0.01);
 		}
 		TEST_METHOD(BB_IVD002)
@@ -25,7 +25,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Map map = populateMap();
 			struct Point p1 = { 2,2 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(BB_IVD003)
@@ -34,7 +34,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Map map = populateMap();
 			struct Point p1 = { -2,5 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(BB_IVD004)
@@ -42,7 +42,7 @@ namespace MilestoneunitTesting
 			Logger::WriteMessage("NULL map test");
 			int d;
 			struct Point p1 = { 2,2 };
-			d = isValidDestination(NULL, p1);
+			d = isValidDestination(NULL, &p1);
 			Assert::AreEqual(0, d, 0.01);
 		};
 		// WHITE BOX TESTING
@@ -52,7 +52,7 @@ namespace MilestoneunitTesting
 			int d = 1;
 			struct Map map = populateMap();
 			struct Point p1 = { 0, 0 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(1, d, 0.01);
 		}
 		TEST_METHOD(WB_IVD002)
@@ -61,7 +61,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Map map = populateMap();
 			struct Point p1 = { MAP_ROWS + 1, 1 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(0, d, 0.01);
 
 		}
@@ -71,7 +71,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Map map = populateMap();
 			struct Point p1 = { 1, MAP_COLS + 1 };
-			d = isValidDestination(&map, p1);
+			d = isValidDestination(&map, &p1);
 			Assert::AreEqual(0, d, 0.01);
 
 		}
@@ -80,7 +80,7 @@ namespace MilestoneunitTesting
 			Logger::WriteMessage("Pass NULL as map");
 			int d = 1;
 			struct Point p1 = { 1, 1 };
-			d = isValidDestination(NULL, p1);
+			d = isValidDestination(NULL, &p1);
 			Assert::AreEqual(0, d, 0.01);
 		}
 	};
@@ -94,7 +94,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 500, 50, 'B', {}, 0 };
 			struct Package package = { nullptr, 500, 2 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(1, d, 0.01);
 		}
 		TEST_METHOD(BB_CAS002)
@@ -103,7 +103,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 2400, 20, 'B', {}, 0 };
 			struct Package package = { nullptr, 332, 29 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(BB_CAS003)
@@ -112,7 +112,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 2000, 89, 'B', {}, 0 };
 			struct Package package = { nullptr, 332, 29 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(BB_CAS004)
@@ -121,7 +121,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 0, 0, 'B', {}, 0 };
 			struct Package package = { nullptr, 2500, 100 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(1, d, 0.01);
 		};
 		// WHITE BOX TESTING
@@ -131,7 +131,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 500, 50, 'B', {}, 0 };
 			struct Package package = { nullptr, 500, 2 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(1, d, 0.01);
 		}
 		TEST_METHOD(WB_CAS002)
@@ -140,7 +140,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 2400, 20, 'B', {}, 0 };
 			struct Package package = { nullptr, 332, 29 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(WB_CAS003)
@@ -149,7 +149,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 2000, 89, 'B', {}, 0 };
 			struct Package package = { nullptr, 332, 29 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(WB_CAS004)
@@ -158,7 +158,7 @@ namespace MilestoneunitTesting
 			int d;
 			struct Truck truck = { nullptr, 0, 0, 'B', {}, 0 };
 			struct Package package = { nullptr, 2500, 100 };
-			d = calculateAvailableSpace(truck, package);
+			d = calculateAvailableSpace(&truck, &package);
 			Assert::AreEqual(1, d, 0.01);
 		};
 	};
@@ -186,7 +186,8 @@ namespace MilestoneunitTesting
 		{
 			Logger::WriteMessage("Empty point test");
 			int d;
-			d = isValidPoint(nullptr);
+			struct Point p1;
+			d = isValidPoint(&p1);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(BB_IVP004)
@@ -210,7 +211,8 @@ namespace MilestoneunitTesting
 		{
 			Logger::WriteMessage("Pass Null Point");
 			int d;
-			d = isValidPoint(nullptr);
+			struct Point p1;
+			d = isValidPoint(&p1);
 			Assert::AreEqual(0, d, 0.01);
 		}
 		TEST_METHOD(WB_IVP003)
@@ -335,7 +337,7 @@ namespace MilestoneunitTesting
 			struct Package package = { &packageDestination, 100, 10 }; // Package within the capacity of the truck
 			int numTrucks = 1;
 
-			result = findTruckForShipment(&map, trucks, numTrucks, package);
+			result = findTruckForShipment(&map, trucks, numTrucks, &package);
 			Assert::AreEqual(0, result);
 		}
 		TEST_METHOD(BB_FTFS002)
@@ -353,7 +355,7 @@ namespace MilestoneunitTesting
 			struct Package package = { &packageDestination, 100, 10 }; // Package fits into the second truck
 			int numTrucks = 3;
 
-			result = findTruckForShipment(&map, trucks, numTrucks, package);
+			result = findTruckForShipment(&map, trucks, numTrucks, &package);
 			Assert::AreEqual(1, result);
 		}
 		TEST_METHOD(BB_FTFS003)
@@ -370,7 +372,7 @@ namespace MilestoneunitTesting
 			struct Package package = { &packageDestination, 600, 60 }; // Package too large or heavy for all trucks
 			int numTrucks = 2;
 
-			result = findTruckForShipment(&map, trucks, numTrucks, package);
+			result = findTruckForShipment(&map, trucks, numTrucks, &package);
 			Assert::AreEqual(-1, result);
 		}
 		TEST_METHOD(BB_FTFS004)
@@ -386,7 +388,7 @@ namespace MilestoneunitTesting
 			struct Package package = { &packageDestination, 100, 10 }; // Any valid package
 			int numTrucks = 2;
 
-			result = findTruckForShipment(NULL, trucks, numTrucks, package);
+			result = findTruckForShipment(NULL, trucks, numTrucks, &package);
 			Assert::AreEqual(-1, result); // or check for an error message
 		}
 		// WHITE BOX TESTING
@@ -406,7 +408,7 @@ namespace MilestoneunitTesting
 			struct Truck tr3 = { &p3, 0.0, 0.0, 'B', &exp3, 2 };
 			struct Truck trucks[] = { tr1, tr2, tr3 };
 			struct Package package = { &p1, 1.0, 1.0 };
-			result = findTruckForShipment(&map, trucks, 3, package);
+			result = findTruckForShipment(&map, trucks, 3, &package);
 			Assert::AreEqual(0, result, 0.01);
 
 		}
@@ -416,14 +418,14 @@ namespace MilestoneunitTesting
 			int result = 0;
 			struct Map map = populateMap();
 			struct Point p1 = { 0, 0 };
-			struct Point p2 = { MAP_ROWS / 2, MAP_COLS / 2 };
-			struct Route exp1 = { p1 };
-			struct Route exp2 = { p2 };
+			struct Point p2 = { 10, 10 };
+			struct Route exp1 = { p1, 1, 'B' };
+			struct Route exp2 = { p2, 1, 'B' };
 			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &exp1, 2 };
 			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &exp2, 2 };
 			struct Truck trucks[] = { tr1, tr2 };
 			struct Package package = { &p2, 1.0, 1.0 };
-			result = findTruckForShipment(&map, trucks, 2, package);
+			result = findTruckForShipment(&map, trucks, 2, &package);
 			Assert::AreEqual(1, result, 0.01);
 		}
 		TEST_METHOD(WB_FTFS003)
@@ -439,7 +441,7 @@ namespace MilestoneunitTesting
 			struct Truck tr2 = { &p2, 0.0, TRUCK_MAX_VOLUME, 'B', &exp2, 2 };
 			struct Truck trucks[] = { tr1, tr2 };
 			struct Package package = { &p2, 1.0, 1.0 };
-			result = findTruckForShipment(&map, trucks, 2, package);
+			result = findTruckForShipment(&map, trucks, 2, &package);
 			Assert::AreEqual(-1, result, 0.01);
 		}
 		TEST_METHOD(WB_FTFS004)
@@ -449,7 +451,7 @@ namespace MilestoneunitTesting
 			struct Map map = populateMap();
 			struct Point p1 = { 0, 0 };
 			struct Package package = { &p1, 1.0, 1.0 };
-			result = findTruckForShipment(&map, NULL, 3, package);
+			result = findTruckForShipment(&map, NULL, 3, &package);
 			Assert::AreEqual(-1, result, 0.01);
 		}
 	};
@@ -471,20 +473,20 @@ namespace MilestoneunitTesting
 			{
 			{0, 1},
 			{0, 2},
-			{0, 3} 
+			{0, 3}
 				},
 				3, // Number of points
 				DIVERSION  // Route symbol
-							};		
+			};
 
 			// Check if the route symbols are the same
 			if (returnedRoute.routeSymbol != correctRoute.routeSymbol) {
-				test =  0;
+				test = 0;
 			}
 			// Check if each corresponding point is the same
 			for (int i = 0; i < returnedRoute.numPoints; ++i) {
 				if (!eqPt(returnedRoute.points[i], correctRoute.points[i])) {
-					test =  0;
+					test = 0;
 				}
 			}
 			Assert::AreEqual(3, returnedRoute.numPoints);
@@ -648,5 +650,90 @@ namespace MilestoneunitTesting
 		}
 
 
+	};
+}
+namespace MilestoneIntegrationTesting
+{
+	TEST_CLASS(findTruckForShipmentTesting)
+	{
+	public:
+		// WHITE BOX TESTING
+		TEST_METHOD(INT_FTFS001)
+		{
+			Logger::WriteMessage("Use valid Point in isValidPoint() to validate Package argument in findTruckForShipment()");
+			int result;
+			int ivpResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidPoint(&destPoint);
+			Assert::AreEqual(1, ivpResult, 0.01);
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, result, 0.01);
+
+		}
+		TEST_METHOD(INT_FTFS002)
+		{
+			Logger::WriteMessage("Use invalid Point in isValidPoint() to invalidate Package argument in findTruckForShipment()");
+			int result;
+			int ivpResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { MAP_ROWS+1, MAP_COLS+1 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidPoint(&destPoint);
+			Assert::AreEqual(0, ivpResult, 0.01);
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(-1, result, 0.01);
+		}
+		TEST_METHOD(INT_FTFS003)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
+			int result;
+			int ivpResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidDestination( &map, &destPoint);
+			Assert::AreEqual(1, ivpResult, 0.01);
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, result, 0.01);
+		}
+		TEST_METHOD(INT_FTFS004)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
+			int result;
+			int ivpResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { MAP_ROWS + 1, MAP_COLS + 1 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidPoint(&destPoint);
+			Assert::AreEqual(0, ivpResult, 0.01);
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(-1, result, 0.01);
+		}
 	};
 }
