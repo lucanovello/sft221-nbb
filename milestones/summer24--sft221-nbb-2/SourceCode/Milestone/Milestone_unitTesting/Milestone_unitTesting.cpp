@@ -652,16 +652,210 @@ namespace MilestoneUnitTesting
 
 	};
 }
+
 namespace MilestoneIntegrationTesting
 {
-	TEST_CLASS(findTruckForShipmentTesting)
+	TEST_CLASS(isValidPointIntegrationTesting)
 	{
 	public:
-		// WHITE BOX TESTING
+		TEST_METHOD(INT_IVP001)
+		{
+			Logger::WriteMessage("Use valid Point in isValidPoint() and in isValidDestination()");
+			int ivpResults;
+			int ivdResults;
+			struct Point p1 = { 0, 0 };
+			struct Map map = populateMap();
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivpResults, 0.01);
+			ivdResults = isValidDestination(&map, &p1);
+			Assert::AreEqual(1, ivdResults, 0.01);
+		}
+		TEST_METHOD(INT_IVP002)
+		{
+			Logger::WriteMessage("Use invalid Point in isValidPoint() and in isValidDestination()");
+			int ivpResults;
+			int ivdResults;
+			struct Point p1 = { MAP_ROWS + 1, MAP_COLS + 1 };
+			struct Map map = populateMap();
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(0, ivpResults, 0.01);
+			ivdResults = isValidDestination(&map, &p1);
+			Assert::AreEqual(0, ivdResults, 0.01);
+		}
+		TEST_METHOD(INT_IVP003)
+		{
+			Logger::WriteMessage("Use valid Point in isValidPoint() to validate Package argument in calculateAvailableSpace()");
+			int ivpResults;
+			int casResults;
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { MAP_ROWS, MAP_COLS };
+			struct Point destPoint = { 0, 0 };
+			struct Map map = populateMap();
+			struct Route route = { NULL, 0, 'B'};
+			struct Truck truck = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivpResults, 0.01);
+			casResults = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, casResults, 0.01);
+		}
+		TEST_METHOD(INT_IVP004)
+		{
+			Logger::WriteMessage("Use valid Point in isValidPoint() to validate Package argument in findTruckForShipment()");
+			int ivpResult;
+			int ftsResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidPoint(&destPoint);
+			Assert::AreEqual(1, ivpResult, 0.01);
+			ftsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftsResult, 0.01);
+		}
+	};
+	TEST_CLASS(isValidDestinationIntegrationTesting)
+	{
+	public:
+		TEST_METHOD(INT_IVD001)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() and in isValidPoint()");
+			int ivpResults;
+			int ivdResults;
+			struct Point p1 = { 4, 4 };
+			struct Map map = populateMap();
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivpResults, 0.01);
+			ivdResults = isValidDestination(&map, &p1);
+			Assert::AreEqual(1, ivdResults, 0.01);
+		}
+		TEST_METHOD(INT_IVD002)
+		{
+			Logger::WriteMessage("Use invalid Point in isValidDestination() and in isValidPoint()");
+			int ivpResults;
+			int ivdResults;
+			struct Point p1 = { MAP_ROWS * 2, MAP_COLS * 2 };
+			struct Map map = populateMap();
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(0, ivpResults, 0.01);
+			ivdResults = isValidDestination(&map, &p1);
+			Assert::AreEqual(0, ivdResults, 0.01);
+		}
+		TEST_METHOD(INT_IVD003)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in calculateAvailableSpace()");
+			int ivdResults;
+			int casResults;
+			struct Point p1 = { 0, 0 };
+			struct Point destPoint = { 0, 0 };
+			struct Route route = { NULL, 0, 'B' };
+			struct Truck truck = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivdResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivdResults, 0.01);
+			casResults = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, casResults, 0.01);
+		}
+		TEST_METHOD(INT_IVD004)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
+			int ivpResult;
+			int ftfsResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 4, 4 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidDestination(&map, &destPoint);
+			Assert::AreEqual(1, ivpResult, 0.01);
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftfsResult, 0.01);
+		}
+	};
+	TEST_CLASS(calculateAvailableSpaceIntegrationTesting)
+	{
+	public:
+		TEST_METHOD(INT_CAS001)
+		{
+			Logger::WriteMessage("Use valid Point p in isValidPoint() and pass p to valid Package for calculateAvailableSpace()");
+			int ivpResults;
+			int casResults;
+			struct Point p1 = { 0, 0 };
+			struct Point destPoint = { 0, 0 };
+			struct Route route = { NULL, 0, 'B' };
+			struct Truck truck = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivpResults, 0.01);
+			casResults = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, casResults, 0.01);
+		}
+		TEST_METHOD(INT_CAS002)
+		{
+			Logger::WriteMessage("Use invalid Point p in isValidPoint() and pass p to valid Package for calculateAvailableSpace()");
+			int ivpResults;
+			int casResults;
+			struct Point p1 = { 0, 0 };
+			struct Point destPoint = { MAP_ROWS+1, MAP_COLS+1 };
+			struct Route route = { NULL, 0, 'B' };
+			struct Truck truck = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivpResults, 0.01);
+			casResults = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, casResults, 0.01);
+		}
+		TEST_METHOD(INT_CAS003)
+		{
+			Logger::WriteMessage("Use valid Point p in isValidDestination() and pass p to valid Package for calculateAvailableSpace()");
+			int ivdResults;
+			int casResults;
+			struct Point p1 = { 0, 0 };
+			struct Point destPoint = { 0, 0 };
+			struct Route route = { NULL, 0, 'B' };
+			struct Truck truck = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivdResults = isValidPoint(&p1);
+			Assert::AreEqual(1, ivdResults, 0.01);
+			casResults = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, casResults, 0.01);
+		}
+		TEST_METHOD(INT_CAS004)
+		{
+			Logger::WriteMessage("create and pass valid Truck, Package to calculateAvailableSpace() and then to findTruckForShipment()");
+			int ftfsResult;
+			int casResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 4, 4 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			casResult = calculateAvailableSpace(&tr1, &package);
+			Assert::AreEqual(1, casResult, 0.01);
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftfsResult, 0.01);
+		};
+	};
+	TEST_CLASS(findTruckForShipmentIntegrationTesting)
+	{
+	public:
 		TEST_METHOD(INT_FTFS001)
 		{
 			Logger::WriteMessage("Use valid Point in isValidPoint() to validate Package argument in findTruckForShipment()");
-			int result;
+			int ftfsResult;
 			int ivpResult;
 			struct Map map = populateMap();
 			struct Point destPoint = { 0, 0 };
@@ -674,52 +868,13 @@ namespace MilestoneIntegrationTesting
 			struct Package package = { &destPoint, 1.0, 1.0 };
 			ivpResult = isValidPoint(&destPoint);
 			Assert::AreEqual(1, ivpResult, 0.01);
-			result = findTruckForShipment(&map, trucks, 2, &package);
-			Assert::AreEqual(0, result, 0.01);
-
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftfsResult, 0.01);
 		}
 		TEST_METHOD(INT_FTFS002)
 		{
 			Logger::WriteMessage("Use invalid Point in isValidPoint() to invalidate Package argument in findTruckForShipment()");
-			int result;
-			int ivpResult;
-			struct Map map = populateMap();
-			struct Point destPoint = { MAP_ROWS+1, MAP_COLS+1 };
-			struct Point p1 = { 0, 0 };
-			struct Point p2 = { 20, 20 };
-			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
-			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
-			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
-			struct Truck trucks[] = { tr1, tr2 };
-			struct Package package = { &destPoint, 1.0, 1.0 };
-			ivpResult = isValidPoint(&destPoint);
-			Assert::AreEqual(0, ivpResult, 0.01);
-			result = findTruckForShipment(&map, trucks, 2, &package);
-			Assert::AreEqual(-1, result, 0.01);
-		}
-		TEST_METHOD(INT_FTFS003)
-		{
-			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
-			int result;
-			int ivpResult;
-			struct Map map = populateMap();
-			struct Point destPoint = { 0, 0 };
-			struct Point p1 = { 0, 0 };
-			struct Point p2 = { 20, 20 };
-			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
-			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
-			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
-			struct Truck trucks[] = { tr1, tr2 };
-			struct Package package = { &destPoint, 1.0, 1.0 };
-			ivpResult = isValidDestination( &map, &destPoint);
-			Assert::AreEqual(1, ivpResult, 0.01);
-			result = findTruckForShipment(&map, trucks, 2, &package);
-			Assert::AreEqual(0, result, 0.01);
-		}
-		TEST_METHOD(INT_FTFS004)
-		{
-			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
-			int result;
+			int ftfsResult;
 			int ivpResult;
 			struct Map map = populateMap();
 			struct Point destPoint = { MAP_ROWS + 1, MAP_COLS + 1 };
@@ -732,8 +887,165 @@ namespace MilestoneIntegrationTesting
 			struct Package package = { &destPoint, 1.0, 1.0 };
 			ivpResult = isValidPoint(&destPoint);
 			Assert::AreEqual(0, ivpResult, 0.01);
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(-1, ftfsResult, 0.01);
+		}
+		TEST_METHOD(INT_FTFS003)
+		{
+			Logger::WriteMessage("Use valid Point in isValidDestination() to validate Package argument in findTruckForShipment()");
+			int ftfsResult;
+			int ivpResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			ivpResult = isValidDestination(&map, &destPoint);
+			Assert::AreEqual(1, ivpResult, 0.01);
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftfsResult, 0.01);
+		}
+		TEST_METHOD(INT_FTFS004)
+		{
+			Logger::WriteMessage("Use valid Point in new valid Package package and pass to calculateAvailableSpace() and findTruckForShipment()");
+			int ftfsResult;
+			int casResult;
+			struct Map map = populateMap();
+			struct Point destPoint = { 0, 0 };
+			struct Point p1 = { 0, 0 };
+			struct Point p2 = { 20, 20 };
+			struct Route route = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, 'B' };
+			struct Truck tr1 = { &p1, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck tr2 = { &p2, 0.0, 0.0, 'B', &route, 0 };
+			struct Truck trucks[] = { tr1, tr2 };
+			struct Package package = { &destPoint, 1.0, 1.0 };
+			casResult = calculateAvailableSpace(&tr1, &package);
+			Assert::AreEqual(1, casResult, 0.01);
+			ftfsResult = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, ftfsResult, 0.01);
+		}
+	};
+
+
+
+}
+
+namespace MilestoneAcceptanceTests
+{
+	TEST_CLASS(AcceptanceTests)
+	{
+	public:
+
+		// Acceptance test for the isValidDestination function
+		TEST_METHOD(ACC_IVD001)
+		{
+			Logger::WriteMessage("Acceptance Test: isValidDestination with valid point");
+			struct Map map = populateMap();
+			struct Point p1 = { 1, 3 };
+			int result = isValidDestination(&map, &p1);
+			Assert::AreEqual(1, result, L"Expected point to be a valid destination.");
+		}
+
+		// Acceptance test for the calculateAvailableSpace function
+		TEST_METHOD(ACC_CAS001)
+		{
+			Logger::WriteMessage("Acceptance Test: calculateAvailableSpace with fitting package");
+			struct Truck truck = { nullptr, 500, 50, 'B', {}, 0 };
+			struct Package package = { nullptr, 500, 2 };
+			int result = calculateAvailableSpace(&truck, &package);
+			Assert::AreEqual(1, result, L"Expected truck to have available space for the package.");
+		}
+
+		// Acceptance test for the shortestPath function
+		TEST_METHOD(ACC_SHP001)
+		{
+			Logger::WriteMessage("Acceptance Test: shortestPath with valid route");
+			struct Route expectedRoute = { { { 0, 1 }, { 0, 2 }, { 0, 3 } }, 3, DIVERSION };
+			struct Map map = populateMap();
+			struct Point start = { 0, 0 };
+			struct Point dest = { 0, 4 };
+			struct Route actualRoute = shortestPath(&map, start, dest);
+
+			Assert::AreEqual(expectedRoute.routeSymbol, actualRoute.routeSymbol, L"Expected route symbol to match.");
+			Assert::AreEqual(expectedRoute.numPoints, actualRoute.numPoints, L"Expected number of points to match.");
+			for (int i = 0; i < actualRoute.numPoints; ++i)
+			{
+				Assert::AreEqual(expectedRoute.points[i].row, actualRoute.points[i].row, L"Expected row values to match.");
+				Assert::AreEqual(expectedRoute.points[i].col, actualRoute.points[i].col, L"Expected column values to match.");
+			}
+		}
+		// Acceptance tests for the findTruckForShipment function
+		TEST_METHOD(ACC_FTFS001)
+		{
+			Logger::WriteMessage("Acceptance Test: findTruckForShipment with suitable truck");
+			struct Map map = populateMap();
+			struct Point truckPosition = { 1, 1 };
+			struct Truck trucks[1] = { { &truckPosition, 500, 50, 'B', nullptr, 0 } };
+			struct Point packageDestination = { 3, 3 };
+			struct Package package = { &packageDestination, 100, 10 };
+			int result = findTruckForShipment(&map, trucks, 1, &package);
+			Assert::AreEqual(0, result, L"Expected truck to be suitable for shipment.");
+		}
+		TEST_METHOD(ACC_FTFS002)
+		{
+			Logger::WriteMessage("Test with all trucks unavailable and package does not fit any truck");
+			int result;
+			struct Map map = populateMap();
+			struct Point destination = { 1, 19 };
+			struct Truck trucks[] = {
+				{ new Point{0, 0}, 0, 0, 'B', NULL, 0 },
+				{ new Point{0, 0}, 0, 0, 'B', NULL, 0 }
+			};
+			struct Package package = { &destination, 5.0, TRUCK_MAX_VOLUME+1 };
+
 			result = findTruckForShipment(&map, trucks, 2, &package);
-			Assert::AreEqual(-1, result, 0.01);
+			Assert::AreEqual(-1, result);
+		}
+		TEST_METHOD(ACC_FTFS003)
+		{
+			Logger::WriteMessage("Test with one truck unavailable and the other available");
+			int result;
+			struct Map map = populateMap();
+			struct Point destination = { 4, 4 };
+			struct Truck trucks[] = {
+				{ new Point{0, 0}, 0, 0, 'Y', NULL, 0},
+				{ new Point{0, 0}, 0, 0, 'Y', NULL, 0 }
+			};
+			struct Package package = { &destination, 5.0, 5.0 };
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(0, result); 
+		}
+		TEST_METHOD(ACC_FTFS004)
+		{
+			Logger::WriteMessage("Test with all trucks available and package fits in multiple trucks");
+			int result;
+			struct Map map = populateMap();
+			struct Point destination = { 4, 6 };
+			struct Truck trucks[] = {
+				{ new Point{0, 0}, 0, 0, 'Y', NULL, 0 },
+				{ new Point{4, 4}, 0, 0, 'B', NULL, 0 }
+			};
+			struct Package package = { &destination, 5.0, 5.0 };
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(1, result);
+		}
+		TEST_METHOD(ACC_FTFS005)
+		{
+			Logger::WriteMessage("Test with all trucks unavailable and invalid package destination");
+			int result;
+			struct Map map = populateMap();
+			struct Point destination = { -1, -1 }; 
+			struct Truck trucks[] = {
+				{ new Point{0, 0}, 0, 0, 'B', NULL, 0 },
+				{ new Point{2, 2}, 0, 0, 'B', NULL, 0 }
+			};
+			struct Package package = { &destination, 5.0, 5.0 };
+			result = findTruckForShipment(&map, trucks, 2, &package);
+			Assert::AreEqual(-1, result);
 		}
 	};
 }
